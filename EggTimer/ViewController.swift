@@ -15,9 +15,16 @@ class ViewController: UIViewController {
     let hardTime = 12
     
     @IBAction func hardnessSelected(_ sender: UIButton) {
-        let _ = sender.currentTitle //if I don`t use the variable, I can don`t write its name only _
-//        print(hardness)
-        
+        let _ = sender.currentTitle // hardness
+        if sender.currentTitle == "Soft" {
+            print(softTime)
+        }
+        if sender.currentTitle == "Medium" {
+            print(mediumTime)
+        }
+        if sender.currentTitle == "Hard" {
+            print(hardTime)
+        }
     }
     
 
