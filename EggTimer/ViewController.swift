@@ -14,27 +14,28 @@ class ViewController: UIViewController {
     
     let eggTimes = ["Soft" : 5, "Medium" : 7, "Hard" : 12]
     var counter = 0
+    var totalTime = 0
     var timer = Timer()
-    var progressBarMax: Float = 0.0
     
     @IBAction func hardnessSelected(_ sender: UIButton) {
         timer.invalidate()
+        counter = 0
         if sender.currentTitle != nil {
             let hardness = sender.currentTitle!
-            counter = eggTimes[hardness]! * 60
-            progressBarMax = Float(counter)
+            totalTime = eggTimes[hardness]! * 60
+            progressBar.progress = 1.0
             timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
         }
     }
  
     @objc func updateCounter() {
-        if counter > 0 {
-//            print("\(counter) seconds left")
-            titleLabel.text = "\(counter) seconds left"
-            progressBar.progress = Float(counter) / progressBarMax
-            counter -= 1
+        if counter < totalTime {
+            titleLabel.text = "\((totalTime - counter) / 60) minutes left"
+            progressBar.progress = Float(counter) / Float(totalTime)
+            print("\(counter) //\(totalTime)// \(progressBar.progress)")
+            counter += 1
         } else {
-            progressBar.progress = 0
+            progressBar.progress = 1
             titleLabel.text = "DONE!"
         }
     }
