@@ -7,21 +7,22 @@
 
 import Foundation
 
-
-// Challenge 82 if-else Angela Yu
+// Challenge 82 switch Angela Yu
 
 func loveCalculator() {
-    var loveScore = Int.random(in: 0...100)
+    var loveScore = Int.random(in: 0 ... 100)
     print(loveScore)
-    if loveScore > 80 {
+    switch loveScore {
+    case (80 ... 100) :
         print("You love each other like Kanye love Kanye")
-    } else if (loveScore > 40 && loveScore <= 80) {
+    case (40 ... 79) :
         print("You go toghether like coke and Mentos")
-    } else {
+    case (0 ... 39) :
         print("You`ll be forever alone")
+    default :
+        print("Error")
     }
 }
- 
 
 loveCalculator()
 
