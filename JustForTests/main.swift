@@ -7,22 +7,19 @@
 
 import Foundation
 
-func exercise() {
-    let alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
-    var word = ""
-    //The number of letters in alphabet equals 26
-    while word.count < 6 {
-        var letter = alphabet[Int.random(in: 0...25)]
-        word = word + letter
-        print("letter = \(letter)")
-        print("word = \(word)")
-    }
-    
-    let password = word//Replace this comment with your code.
-    
-    print(password)
-    
-}
 
-exercise()
+var array = [1, 3, 5, 7]
+array[1] = 9
+print(array)
+print(array[1])
+
+let arrayCount = array.count // кол-во элементов
+print(arrayCount)
+array.append(3) // добавляет значение как новый элемент в конец массива
+array.insert(4, at: 2) // Добавлет новый элемент по указанному индексу
+print(array)
+array.remove(at: 1) // Удаление элемента по индексу
+print(array)
+array.removeAll() // Удаление элементов массива
+print(array)
 
