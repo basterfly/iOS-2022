@@ -8,18 +8,20 @@
 import Foundation
 
 
-var array = [1, 3, 5, 7]
-array[1] = 9
-print(array)
-print(array[1])
+// Challenge 82 if-else Angela Yu
 
-let arrayCount = array.count // кол-во элементов
-print(arrayCount)
-array.append(3) // добавляет значение как новый элемент в конец массива
-array.insert(4, at: 2) // Добавлет новый элемент по указанному индексу
-print(array)
-array.remove(at: 1) // Удаление элемента по индексу
-print(array)
-array.removeAll() // Удаление элементов массива
-print(array)
+func loveCalculator() {
+    var loveScore = Int.random(in: 0...100)
+    print(loveScore)
+    if loveScore > 80 {
+        print("You love each other like Kanye love Kanye")
+    } else if (loveScore > 40 && loveScore <= 80) {
+        print("You go toghether like coke and Mentos")
+    } else {
+        print("You`ll be forever alone")
+    }
+}
+ 
+
+loveCalculator()
 
