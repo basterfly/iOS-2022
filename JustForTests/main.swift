@@ -7,26 +7,28 @@
 
 import Foundation
 
-func testDict() {
+//var studentsAndScores = ["Amy": Int(readLine()!)!, "James": Int(readLine()!)!, "Helen": Int(readLine()!)!]
 
-    //Don't change this
-    var stockTickers: [String: String] = [
-        "APPL" : "Apple Inc",
-        "HOG": "Harley-Davidson Inc",
-        "BOOM": "Dynamic Materials",
-        "HEINY": "Heineken",
-        "BEN": "Franklin Resources Inc"
-    ]
-    
-    //Write your code here.
-    stockTickers = ["WORK" : "Slack Technologies Inc",
-                    "BOOM" : "DMC Global Inc"]
-
-  
-     //Don't modify this
-    print(stockTickers["WORK"]!)
-    print(stockTickers["BOOM"]!)
+func highestScore(scores: [String: Int]) {
+   var tempKey = ""
+   var tempData = 0
+ //Write your code here.
+   for (key, data) in scores {
+       if data > tempData {
+           tempKey = key
+           tempData = data
+       }
+   }
+   print("\(tempKey) : \(tempData)")
 }
- 
-testDict()
- 
+
+//Try some different scores.
+//Dont add the lines below to udemy!
+highestScore(
+   scores: [
+   "Amy": 78,
+   "James": 65,
+   "Helen": 92
+   ]
+)
+
