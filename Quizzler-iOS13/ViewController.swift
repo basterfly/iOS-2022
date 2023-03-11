@@ -15,10 +15,22 @@ class ViewController: UIViewController {
     @IBOutlet weak var trueButton: UIButton!
     @IBOutlet weak var falseButton: UIButton!
     
-    let quiz = [Question(text: "Four + Two is equal to Six", answer: "True"),
-                Question(text: "Five - Three is greater than One", answer: "True"),
-                Question(text: "Three + Eight is less than Ten", answer: "False")]
+    let quiz = [
+        Question(questionText: "A slug's blood is green.", answer: "True"),
+        Question(questionText: "Approximately one quarter of human bones are in the feet.", answer: "True"),
+        Question(questionText: "The total surface area of two human lungs is approximately 70 square metres.", answer: "True"),
+        Question(questionText: "In West Virginia, USA, if you accidentally hit an animal with your car, you are free to take it home to eat.", answer: "True"),
+        Question(questionText: "In London, UK, if you happen to die in the House of Parliament, you are technically entitled to a state funeral, because the building is considered too sacred a place.", answer: "False"),
+        Question(questionText: "It is illegal to pee in the Ocean in Portugal.", answer: "True"),
+        Question(questionText: "You can lead a cow down stairs but not up stairs.", answer: "False"),
+        Question(questionText: "Google was originally called 'Backrub'.", answer: "True"),
+        Question(questionText: "Buzz Aldrin's mother's maiden name was 'Moon'.", answer: "True"),
+        Question(questionText: "The loudest sound produced by any animal is 188 decibels. That animal is the African Elephant.", answer: "False"),
+        Question(questionText: "No piece of square dry paper can be folded in half more than 7 times.", answer: "False"),
+        Question(questionText: "Chocolate affects a dog's heart and nervous system; a few ounces are enough to kill a small dog.", answer: "True")
+    ]
     var questionNumber = 0
+    var timer = Timer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,23 +42,27 @@ class ViewController: UIViewController {
         let userAnswer = sender.currentTitle
         let actualAnswer = quiz[questionNumber].answer
         if userAnswer == actualAnswer {
-            print("Righrt")
+            sender.backgroundColor = UIColor.green
         } else {
-            print("Wrong")
+            sender.backgroundColor = UIColor.red
         }
         
         if questionNumber + 1 < quiz.count {
             questionNumber += 1
         } else {
             questionNumber = 0
+            progressBar.progress = 0
         }
         
-        updateUI()
+        timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(updateUI), userInfo: nil, repeats: false)
         
     }
     
-    func updateUI() {
+    @objc func updateUI() {
         questionLabel.text = quiz[questionNumber].text
+        trueButton.backgroundColor = UIColor.clear
+        falseButton.backgroundColor = UIColor.clear
+        progressBar.progress = Float(questionNumber + 1) / Float(quiz.count)
     }
 }
 
