@@ -7,28 +7,22 @@
 
 import Foundation
 
-//var studentsAndScores = ["Amy": Int(readLine()!)!, "James": Int(readLine()!)!, "Helen": Int(readLine()!)!]
+//Section 9: - Structures with properties and methods
 
-func highestScore(scores: [String: Int]) {
-   var tempKey = ""
-   var tempData = 0
- //Write your code here.
-   for (key, data) in scores {
-       if data > tempData {
-           tempKey = key
-           tempData = data
-       }
-   }
-   print("\(tempKey) : \(tempData)")
+struct Town{
+    var name = "Angelaland"
+    var citizens = ["Angela", "Jack Bauer"]
+    var resources = ["Grain": 100, "Ore": 42, "Wool": 75]
+    
+    func fotify() {
+        print("Defences Incresed")
+    }
 }
 
-//Try some different scores.
-//Dont add the lines below to udemy!
-highestScore(
-   scores: [
-   "Amy": 78,
-   "James": 65,
-   "Helen": 92
-   ]
-)
+var myTown = Town()
+print(myTown.citizens)
+print("\(myTown.name) has \(myTown.resources["Grain"]!) bags of grain")
+myTown.citizens.append("Keanu Reeves")
+print("How many citizens in the city? - \(myTown.citizens.count)")
+myTown.fotify()
 
