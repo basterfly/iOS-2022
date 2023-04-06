@@ -7,22 +7,25 @@
 
 import Foundation
 
-//Section 9: - Structures with properties and methods
+//Section 9: - Structures with init, properties and methods
+//v2 init() with different value names
 
 struct Town{
-    var name = "Angelaland"
-    var citizens = ["Angela", "Jack Bauer"]
-    var resources = ["Grain": 100, "Ore": 42, "Wool": 75]
+    var name: String
+    var citizens: [String]
+    var resources: [String : Int]
+    
+    init(townName: String, people: [String], stats: [String : Int]) {
+        name = townName
+        citizens = people
+        resources = stats
+    }
     
     func fotify() {
         print("Defences Incresed")
     }
 }
 
-var myTown = Town()
-print(myTown.citizens)
-print("\(myTown.name) has \(myTown.resources["Grain"]!) bags of grain")
-myTown.citizens.append("Keanu Reeves")
-print("How many citizens in the city? - \(myTown.citizens.count)")
-myTown.fotify()
-
+var anotherTown = Town(townName: "Nameless Island", people: ["Tom Hanks"], stats: ["Coconuts": 100])
+anotherTown.citizens.append("Wilson")
+print(anotherTown.citizens)
