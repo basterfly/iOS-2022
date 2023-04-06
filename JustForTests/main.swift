@@ -8,24 +8,28 @@
 import Foundation
 
 //Section 9: - Structures with init, properties and methods
-//v2 init() with different value names
+// v3 init() with self.
 
-struct Town{
+struct Town3{
     var name: String
     var citizens: [String]
     var resources: [String : Int]
     
-    init(townName: String, people: [String], stats: [String : Int]) {
-        name = townName
-        citizens = people
-        resources = stats
+    init(name: String, citizens: [String], resources: [String : Int]) {
+        self.name = name
+        self.citizens = citizens
+        self.resources = resources
     }
     
-    func fotify() {
+    func fortify() {
         print("Defences Incresed")
     }
 }
 
-var anotherTown = Town(townName: "Nameless Island", people: ["Tom Hanks"], stats: ["Coconuts": 100])
-anotherTown.citizens.append("Wilson")
-print(anotherTown.citizens)
+var ghostTown = Town3(name: "Ghost McGhostface", citizens: [], resources: ["Tumbleweed" : 1])
+print("""
+    Town Name:  \(ghostTown.name)
+    Resouces: \(ghostTown.resources)
+    Citizens: \(ghostTown.citizens.count)
+""")
+ghostTown.fortify()
