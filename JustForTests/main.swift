@@ -7,29 +7,37 @@
 
 import Foundation
 
-//Section 9: - Structures with init, properties and methods
-// v3 init() with self.
+//Section 9: Structures - Coding Excercise
 
-struct Town3{
-    var name: String
-    var citizens: [String]
-    var resources: [String : Int]
+struct User {
+    var name : String
+    var email : String?
+    var followers : Int
+    var isActive : Bool
     
-    init(name: String, citizens: [String], resources: [String : Int]) {
+    init(name: String, email: String?, followers: Int, isActive: Bool) {
         self.name = name
-        self.citizens = citizens
-        self.resources = resources
+        self.email = email
+        self.followers = followers
+        self.isActive = isActive
     }
     
-    func fortify() {
-        print("Defences Incresed")
+    func logStatus() {
+        if isActive {
+            print("\(name) is working hard")
+        } else {
+            print("\(name) has left earth")
+        }
     }
 }
 
-var ghostTown = Town3(name: "Ghost McGhostface", citizens: [], resources: ["Tumbleweed" : 1])
-print("""
-    Town Name:  \(ghostTown.name)
-    Resouces: \(ghostTown.resources)
-    Citizens: \(ghostTown.citizens.count)
-""")
-ghostTown.fortify()
+var richard = User(name: "Richard", email: nil, followers: 0, isActive: false)
+richard.logStatus()
+
+    var musk = User(name: "Elon", email: "elon@tesla.com", followers: 2001, isActive: true)
+    musk.logStatus()
+    print("Contacting \(musk.name) on \(musk.email!) ...")
+    print("\(musk.name) has \(musk.followers) followers")
+    // sometime later
+    musk.isActive = false
+    musk.logStatus()
